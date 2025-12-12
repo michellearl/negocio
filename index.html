@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cargar Poppins desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!--link para estilos-->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome CDN (alternativa pública) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!--aos animation library-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <title>Michelle Dietética y Transformación</title>
+</head>
+
+<body>
+
+    <!-- Menú de navegación y Hero Image -->
+    <section id="hero">
+        <header>
+            <a href="index.html">
+                <img src="media/logo2.jpg" id="logo" alt="Logo de Michelle Dietética y Transformación">
+            </a>
+            <nav>
+                <ul>
+                    <li class="menu"><a href="#hero">Inicio</a></li>
+                    <li class="menu">
+                        <a href="#galeria">Galería de servicios</a>
+                        <ul id="submenu">
+                            <li class="submenuElement" tabindex="0"><a href="#dietas">Dietas</a></li>
+                            <li class="submenuElement" tabindex="0"><a href="#consultas">Consultas</a></li>
+                        </ul>
+                    </li>
+                    <!-- <li class="menu"><a href="#dietas">Dietas</a></li>
+                    <li class="menu"><a href="#consultas">Consultas</a></li> -->
+                    <li class="menu"><a href="#sobre">Sobre Michelle</a></li>
+                    <li class="menu"><a href="#opiniones">Opiniones</a></li>
+                    <li class="menu"><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="hero-slideshow">
+            <img src="media/hero_image1.jpg" class="hero-image" alt="Transformación 1">
+            <img src="media/hero_image2.jpg" class="hero-image" alt="Transformación 2">
+            <img src="media/hero_image3.jpg" class="hero-image" alt="Transformación 3">
+        </div>
+        
+        <h1>Transforma tu estilo de vida</h1>
+        <p>En Michelle Dietética y Transformación, diseñamos planes de nutrición 100% personalizados, adaptados a tus
+        </p>
+        <p>necesidades y objetivos.</p>
+        <button onclick="pauseAnimation()">Pausar animación</button>
+    </section>
+
+    <!-- Dietas -->
+    <section id="dietas">
+        <h2 data-aos="zoom-in">Dietas</h2>
+        <div class="dietas-container">
+            <div class="dieta-item">
+                <img class="imgDieta" src="media/dieta1.jpeg" alt="Perdida de grasa 1400 kcal">
+            </div>
+            <div class="dieta-item">
+                <img class="imgDieta" src="media/dieta2.jpeg" alt="Perdida de grasa 1600 kcal">
+            </div>
+            <div class="dieta-item">
+                <img class="imgDieta" src="media/dieta3.jpeg" alt="Perdida de grasa 1800 kcal">
+            </div>
+            <div class="dieta-item">
+                <img class="imgDieta" src="media/dieta4.jpeg" alt="Aumento de masa muscular 1800 kcal">
+            </div>
+            <div class="dieta-item">
+                <img class="imgDieta" src="media/dieta5.jpeg" alt="Aumento de masa muscular 2000 kcal">
+            </div>
+            <div class="dieta-item">
+                <img class="imgDieta" src="media/dieta6.jpeg" alt="Aumento de masa muscular 2200 kcal">
+            </div>
+        </div>
+    
+        <!-- modal -->
+        <div id="modalLightbox" class="modal">
+            <div id="imageToShow">
+                <!-- La imagen se agregará aquí mediante JavaScript -->
+            </div>
+            <button class="lb-btn lbbLeft"><i class="fa-solid fa-angles-left" onclick="previousImgDieta(event)"></i></button>
+            <button class="lb-btn lbbRight"><i class="fa-solid fa-angles-right" onclick="nextImgDieta(event)"></i></button>
+            
+        </div>
+    
+    </section>
+    
+    <!-- Consultas -->
+    <section id="consultas">
+        <h2 data-aos="zoom-in">Consultas</h2>
+
+        <!-- Zona de Pestañas -->
+        <div class="tabs-container">
+            <ul class="tabs">
+                <li class="tab" data-tab="tab1">Consulta Presencial</li>
+                <li class="tab" data-tab="tab2">Consulta Online</li>
+                <li class="tab" data-tab="tab3">Consulta Personalizada</li>
+            </ul>
+
+            <!-- Contenido de las pestañas -->
+            <div class="tab-content" id="tab1">
+                <h3>Consulta Presencial</h3>
+                <p>Las consultas presenciales se realizan en nuestro centro, donde podrás recibir asesoramiento
+                    personalizado en persona. Durante la consulta, se analizarán tus objetivos de salud, se realizará un
+                    examen físico y se diseñará un plan de nutrición y ejercicio adaptado a tus necesidades específicas.
+                </p>
+            </div>
+            <div class="tab-content" id="tab2">
+                <h3>Consulta Online</h3>
+                <p>Las consultas online son una opción cómoda y flexible para aquellos que no pueden asistir al centro
+                    en persona. A través de videollamadas, Michelle te guiará en tiempo real, adaptando el plan a tus
+                    objetivos y realizando un seguimiento personalizado, todo desde la comodidad de tu hogar.</p>
+            </div>
+            <div class="tab-content" id="tab3">
+                <h3>Consulta Personalizada</h3>
+                <p>La consulta personalizada se adapta completamente a tus necesidades. Es un servicio diseñado para
+                    ofrecer un plan de salud único que no solo incluye nutrición y ejercicio, sino también un enfoque
+                    integral que considera tu estilo de vida, tus preferencias alimenticias, tus actividades diarias y
+                    tus metas a largo plazo.</p>
+            </div>
+        </div>
+
+        <div id="consultas-container">
+            <div class="colParrafo">
+                <p>Las consultas con Michelle Gouet son una forma cómoda y efectiva de recibir asesoramiento
+                    personalizado sin importar dónde te encuentres, ofrecemos consultas en persona, online o
+                    completamente personalizadas.</p></br></br></br>
+                <p>Durante la consulta, se evaluarán tus objetivos de salud y se diseñará un plan de nutrición y
+                    ejercicio a medida, asegurandonos de que recibas las mejores recomendaciones para tu transformación.
+                </p></br></br></br>
+                <p>Michelle te guiará paso a paso en el proceso, resolviendo todas tus dudas y adaptando las
+                    recomendaciones a tus necesidades. </p></br></br>
+                <p>A la derecha, podrás ver un video que simula una consulta online, mostrando cómo es el proceso y cómo
+                    te sentirás durante tu sesión.</p>
+            </div>
+            <div class="colVideo">
+                <video src="media/video_real.mp4" id="video" controls muted poster="media/video.jpg">
+                    <track src="subtitulos.vtt" kind="subtitles" srclang="es" label="Español">
+                </video>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sobre Michelle -->
+    <section id="sobre">
+        <h2 data-aos="zoom-in">Sobre Michelle</h2>
+        <div id="consultas-container">
+            <div class="colParrafoSobre">
+                <p>Michelle Gouet es una dietista profesional con años de experiencia ayudando a sus clientes a alcanzar
+                    sus objetivos de salud y bienestar. Su enfoque personalizado y cercano permite crear planes de
+                    nutrición y ejercicio adaptados a las necesidades únicas de cada persona.</p></br>
+                <p>Con una profunda pasión por el bienestar integral, Michelle se especializa en dietas para perder
+                    grasa, ganar masa muscular, y mejorar la digestión, siempre priorizando el equilibrio y la salud a
+                    largo plazo.
+                </p></br>
+                <p> Su compromiso y dedicación han transformado las vidas de muchas personas, brindándoles las
+                    herramientas y el apoyo necesario para lograr una vida más saludable y plena.</p>
+                </p>
+            </div>
+            <div class="colImagen">
+                <!--alt añadido-->
+                <img src="media/nutricionista.jpg" alt="Michelle Gouet">
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Opiniones -->
+     <!-- alt añadido-->
+    <section id="opiniones">
+        <h2 data-aos="zoom-in">Opiniones</h2>
+        <div class="opiniones-container">
+            <div>
+                <p class="nombre">Paola López</p>
+                <div class="opinion-imagen">
+                    <img src="media/opinion1.jpg" alt="Opniion nº1 Paola Lopez">
+                </div>
+            </div>
+            <div>
+                <p class="nombre">Melany Ruiz</p>
+                <div class="opinion-imagen">
+                    <img src="media/opinion2.jpg">
+                </div>
+            </div>
+            <div>
+                <p class="nombre">Gladys Restrepo</p>
+                <div class="opinion-imagen">
+                    <img src="media/opinion3.jpg">
+                </div>
+            </div>
+
+            <div>
+                <p class="nombre">Gabriela Rojas</p>
+                <div class="opinion-imagen">
+                    <img src="media/opinion4.jpg">
+                </div>
+            </div>
+
+            <div>
+                <p class="nombre">Ximena Vidarte</p>
+                <div class="opinion-imagen">
+                    <img src="media/opinion5.jpg">
+                </div>
+            </div>
+            <div>
+                <p class="nombre">Ida Zamb</p>
+                <div class="opinion-imagen">
+                    <img src="media/opinion6.jpg">
+                </div>
+            </div>
+            <div>
+                <p class="nombre">Nicolle Lopez</p>
+                <div class="opinion-imagen">
+                    <img src="media/opinion7.jpg">
+                </div>
+            </div>
+            <div>
+                <p class="nombre">Daniela Fernandez</p>
+                <div class="opinion-imagen">
+                    <img src="media/opinion8.jpg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contacto -->
+    <section id="contacto">
+        <h2 data-aos="zoom-in">Contacto</h2>
+        <div id="contacto-container">
+
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.310249484949!2d6.154843776733527!3d46.20428288375535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c6530d0a8c829%3A0x23351d90c666beb8!2sRue%20du%20Lac%2C%201207%20Gen%C3%A8ve%2C%20Suiza!5e0!3m2!1ses!2ses!4v1742518585589!5m2!1ses!2ses"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <form id="contactForm">
+                <p>Reserva tu cita:</p>
+                <input type="text" id="nombreCompleto" placeholder="Nombre y Apellidos"
+                    pattern="^[A-Za-z]+(\s[A-Za-z]+)$" required
+                    title="Por favor, ingresa solo letras y separa el nombre y apellido con un espacio">
+                <input type="number" id="telefono" placeholder="Número de contacto" required>
+                <input type="email" id="email" placeholder="Correo electrónico" required>
+                <input type="text" id="pesoEdadEstatura" placeholder="Peso(kg) / Edad / Estatura (cm)"
+                    pattern="^[0-9]+(kg)\s*/\s*[0-9]+\s*/\s*[0-9]+(cm)$" required
+                    title="Por favor, ingresa los tres valores con el formato correcto: Peso(kg) / Edad / Estatura (cm)">
+                <input type="date" id="diaCita" placeholder="Selecciona fecha" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        <!-- modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h2>Confirmación de reserva</h2>
+                <span class="close-btn">&times;</span>
+                <p id="confirmation-message"></p>
+                <button onclick="closeModal()">Finalizar</button>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <!-- <p>&copy; 2025 Michelle Dietética y Transformación | Todos los derechos reservados</p> -->
+        <div class="social-media">
+            <!-- Enlace a ws -->
+            <a href="https://www.whatsaap.com">
+                <img src="media/whatsaap.png" alt="Facebook" />
+            </a>
+
+            <!-- Enlace a Instagram -->
+            <a href="https://www.instagram.com">
+                <img src="media/instagram.jpg" alt="Instagram" />
+            </a>
+
+            <!-- Enlace a tiktok -->
+            <a href="https://www.tiktok.com">
+                <img src="media/tiktok.jpg" alt="Twitter" />
+            </a>
+
+            <!-- Enlace a faq -->
+            <!-- <a href="">
+                <img src="media/faq.jpg" id="faq" />
+            </a> -->
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Archivos JS -->
+    <script src="js/scripts.js"></script>
+    <script> readyLightbox(); </script> 
+    <script> AOS.init(); </script>
+
+</body>
+
+</html>
