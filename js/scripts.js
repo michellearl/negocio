@@ -219,10 +219,21 @@ function closeModal() {
 }
 
 //Boton para pausar animacion de imagenes hero
-function pauseAnimation() {
-    document.getElementById("animacionHero").pause();
-}
+/*function pauseAnimation() {
+  document.querySelectorAll("#animacionHero .hero-image").forEach(img => {
+    img.style.animationPlayState = "paused";
+  });
+}*/
 
+let paused = false;
+
+function pauseAnimation() {
+  paused = !paused;
+
+  document.querySelectorAll("#animacionHero .hero-image").forEach(img => {
+    img.style.animationPlayState = paused ? "paused" : "running";
+  });
+}
 
 /*mensaje de confirmacion antes de enviar
     document.getElementById("contactForm").addEventListener("submit", function(event) {
