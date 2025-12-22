@@ -48,6 +48,7 @@ Landing page developed as a web development training project. It presents the pe
 
 ## 📚 Future Improvements (Ideas)
 
+- Improve responsiveness for different desktop screen sizes, as the current layout is not fully optimized for all desktop resolutions.
 - Connect the contact form to a real backend to send the data.
 - Add more visual states (hover/focus) for buttons and links.
 - Further improve responsive design for specific tablet sizes.
@@ -112,6 +113,7 @@ Landing page desarrollada como proyecto de formación en desarrollo web. Present
 
 ## 📚 Próximas mejoras (ideas)
 
+- Mejorar la adaptación responsiva para diferentes tamaños de pantalla en ordenadores, ya que el diseño actual no está completamente optimizado para todas las resoluciones de escritorio.
 - Conectar el formulario a un backend real para enviar los datos.
 - Añadir más estados visuales (hover/focus) para botones y enlaces.
 - Ampliar aún más el diseño responsivo para tablets específicas.
