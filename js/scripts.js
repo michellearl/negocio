@@ -122,81 +122,100 @@ window.onload = function () {
 }
 
 
-
-// Validación de formulario
+// Validación de formulario + confirmación + modal
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
+    const form = document.getElementById("contactForm")
+    if(!form) return;
+
+    form.noValidate = true; //permite que tu JS controle la validación visual
 
     form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        //1.Validar campos vacíos
         let valid = true;
         const inputs = form.querySelectorAll("input, textarea");
 
         inputs.forEach(function (input) {
             if (input.value.trim() === "") {
                 valid = false;
-                input.style.borderColor = "red";  // resaltar campos vacíos en rojo
+                input.classList.add("input-error"); // resalta campos vacíos en rojo
             } else {
-                input.style.borderColor = "#ccc"; // restaurar color de borde
+                input.classList.remove("input-error"); // restaurar color de borde
             }
         });
 
+
         if (!valid) {
-            event.preventDefault();  // Evitar el envío del formulario si no es válido
             alert("Por favor, completa todos los campos.");
+            return;
         }
+
+        //2.Validar formato
+        const pesoEdadEstaturaInput = document.getElementById('pesoEdadEstatura');
+        const pesoEdadEstatura = pesoEdadEstaturaInput.value.trim();
+
+        // Validar que los valores estén separados por dos barras (formato: "Peso / Edad / Estatura")
+        const regex = /^[0-9]+(kg)\s*\/\s*[0-9]+(\s*\/\s*[0-9]+(cm))$/;
+
+        if (!regex.test(pesoEdadEstatura)) {
+            alert("Por favor, ingresa los valores en el formato correcto: Peso(kg) / Edad / Estatura (cm). Ej: 70kg / 27 / 165cm");
+            pesoEdadEstaturaInput.style.borderColor = "red";
+            return;
+        }
+
+        //3.Confirmación antes de enviar el form
+        if (!confirm("¿Estás seguro de que deseas enviar el formulario?")) {
+            return;
+        }
+
+        //4. modal de confirmación
+        // Obtener los valores restantes del formulario
+        const nombreCompleto = document.getElementById('nombreCompleto').value;
+        const telefono = document.getElementById('telefono').value;
+        const email = document.getElementById('email').value;
+        const diaCita = document.getElementById('diaCita').value;
+
+        // Crear el mensaje de confirmación
+        const mensaje = `
+            <p>Gracias, ${nombreCompleto}. Hemos recibido tu solicitud de cita para el día: ${diaCita} con los siguientes datos:</p>
+            <ul>
+                <li>Numero de contacto: ${telefono}</li>
+                <li>Email: ${email}</li>
+                <li>Su peso, edad y estatura: ${pesoEdadEstatura}</li>
+            </ul>
+            <P>Comprabaremos nuestra disponibilidad y le contactaremos.</P>`;
+
+        const modal = document.getElementById("modal");
+        const messageContainer = document.getElementById("confirmation-message");
+
+        // Si el mensaje no existe, no petamos el script
+        if (!modal || !messageContainer) {
+            console.error("No se encontró #modal o #confirmation-message en el HTML.");
+            return;
+        }
+
+        messageContainer.innerHTML = mensaje;
+        modal.style.display = "flex"; 
+    });
+
+    // cuando el usuario escribe se quita el rojo
+    // cuando el usuario escribe: si ya no está vacío, se quita el rojo
+    const inputs = form.querySelectorAll("input");
+
+    inputs.forEach((input) => {
+        input.addEventListener("input", () => {
+            if (input.value.trim() !== "") {
+            input.classList.remove("input-error"); // ✅ quita el rojo
+            }
+        });
     });
 });
 
-document.getElementById('contactForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Evita que el formulario se envíe y recargue la página
-
-    // Obtener el valor del campo
-    const pesoEdadEstatura = document.getElementById('pesoEdadEstatura').value;
-
-    // Validar que los valores estén separados por dos barras (formato: "Peso / Edad / Estatura")
-    const regex = /^[0-9]+(kg)\s*\/\s*[0-9]+(\s*\/\s*[0-9]+(cm))$/;
-
-    if (!regex.test(pesoEdadEstatura)) {
-        alert("Por favor, ingresa los valores en el formato correcto: Peso(kg) / Edad / Estatura (cm)");
-    } else {
-        // Si la validación pasa, puedes proceder con el envío del formulario o mostrar el modal
-        console.log("Formulario enviado correctamente.");
-    }
-});
-
-//modal contacto
-document.getElementById('contactForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Evita que el formulario se envíe y recargue la página
-
-    // Obtener los valores del formulario
-    const nombreCompleto = document.getElementById('nombreCompleto').value;
-    const telefono = document.getElementById('telefono').value;
-    const email = document.getElementById('email').value;
-    const pesoEdadEstatura = document.getElementById('pesoEdadEstatura').value;
-    const diaCita = document.getElementById('diaCita').value;
-
-
-    // Crear el mensaje de confirmación
-    const mensaje = `
-        <p>Gracias, ${nombreCompleto}. Hemos recibido tu solicitud de cita para el día: ${diaCita} con los siguientes datos:</p>
-        <ul>
-            <li>Numero de contacto: ${telefono}</li>
-            <li>Email: ${email}</li>
-            <li>Su peso, edad y estatura: ${pesoEdadEstatura}</li>
-        </ul>
-    <P>Comprabaremos nuestra disponibilidad y le contactaremos.</P>`;
-
-    // Mostrar el mensaje de confirmación en el modal
-    document.getElementById('confirmation-message').innerHTML = mensaje;
-
-    // Mostrar el modal
-    document.getElementById('modal').style.display = 'flex';
-});
-
-
 
 function closeModal() {
-    document.getElementById('modal').style.display = 'none';  // Cierra el modal al ponerlo en display 'none'
+  const modal = document.getElementById("modal");
+  if (modal) modal.style.display = "none";
 }
 
 //Boton para pausar animacion de imagenes hero
@@ -205,10 +224,10 @@ function pauseAnimation() {
 }
 
 
-//mensaje de confirmacion antes de enviar
+/*mensaje de confirmacion antes de enviar
     document.getElementById("contactForm").addEventListener("submit", function(event) {
-        let confirmSubmit = confirm("¿Estás seguro de que deseas enviar el formulario?");
+        //let confirmSubmit = confirm("¿Estás seguro de que deseas enviar el formulario?");
         if (!confirmSubmit) {
             event.preventDefault();  // Detiene el envío del formulario
         }
-    });
+    });*/

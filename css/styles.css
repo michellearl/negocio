@@ -819,6 +819,17 @@ form p {
     margin-right: 380px;
 }
 
+.sr-only {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  border:0;
+}
+
 /* Modal */
 .modal {
     display: none;
@@ -972,7 +983,9 @@ footer {
     /* Aumenta ligeramente el tamaño de la imagen */
 }
 
-
+.input-error {
+  border: 2px solid red !important;
+}
 
 /* Estilos específicos para la imagen con id "faq" */
 /*#faq {
@@ -988,14 +1001,3 @@ footer {
     transform: scale(1.1); /* Aumenta el tamaño al hacer hover 
     transition: all 0.3s ease; /* Transición suave 
 } */
-
-
-esto seria un ejemplo sencillo.
-@media (max-width: 768px) {
-    .header {
-      font-size: 16px;
-    }
-    .menu {
-      display: block;
-    }
-  }
