@@ -218,6 +218,17 @@ function closeModal() {
   if (modal) modal.style.display = "none";
 }
 
+// Listener global UNA SOLA VEZ(para cerrar con esc)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+
+
+
+
+
 //Boton para pausar animacion de imagenes hero
 /*function pauseAnimation() {
   document.querySelectorAll("#animacionHero .hero-image").forEach(img => {
