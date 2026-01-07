@@ -819,6 +819,17 @@ form p {
     margin-right: 380px;
 }
 
+.sr-only {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  border:0;
+}
+
 /* Modal */
 .modal {
     display: none;
@@ -838,6 +849,7 @@ form p {
 }
 
 .modal-content {
+    position: relative; /* 🔑 referencia del botón */
     background-color: white;
     padding: 10px 10px 10px 10px;
     border-radius: 8px;
@@ -907,6 +919,26 @@ form p {
     margin-bottom: 0;
 }
 
+/* Botón cerrar (X) */
+.close-btn {
+  position: absolute;   /* 🔑 permite moverla */
+  top: 6px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 10;
+  color: #333;
+}
+
+/* Hover opcional */
+.close-btn:hover {
+  color: rgb(187, 45, 45);
+}
+
 button {
     background-color: #768870;
     /* Color de fondo del botón */
@@ -972,8 +1004,44 @@ footer {
     /* Aumenta ligeramente el tamaño de la imagen */
 }
 
+.input-error {
+  border: 2px solid red !important;
+}
 
+/* Ajustes básicos responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 20px;
+        text-align: center;
+    }
 
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .hero-slideshow {
+        height: auto;
+    }
+
+    .hero-slideshow .hero-image {
+        max-height: 280px;
+        object-fit: cover;
+    }
+
+    #contacto-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #contacto iframe {
+        width: 100%;
+        height: 300px;
+    }
+}
 /* Estilos específicos para la imagen con id "faq" */
 /*#faq {
     border-radius: 10px; /* No redondea la imagen, puedes ajustarlo 
@@ -988,14 +1056,3 @@ footer {
     transform: scale(1.1); /* Aumenta el tamaño al hacer hover 
     transition: all 0.3s ease; /* Transición suave 
 } */
-
-
-esto seria un ejemplo sencillo.
-@media (max-width: 768px) {
-    .header {
-      font-size: 16px;
-    }
-    .menu {
-      display: block;
-    }
-  }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -45,7 +45,7 @@
             </nav>
         </header>
 
-        <div class="hero-slideshow">
+        <div class="hero-slideshow" id="animacionHero">
             <img src="media/hero_image1.jpg" class="hero-image" alt="Transformación 1">
             <img src="media/hero_image2.jpg" class="hero-image" alt="Transformación 2">
             <img src="media/hero_image3.jpg" class="hero-image" alt="Transformación 3">
@@ -55,7 +55,7 @@
         <p>En Michelle Dietética y Transformación, diseñamos planes de nutrición 100% personalizados, adaptados a tus
         </p>
         <p>necesidades y objetivos.</p>
-        <button onclick="pauseAnimation()">Pausar animación</button>
+        <button onclick="pauseAnimation()">Pausar/Reanudar animación</button>
     </section>
 
     <!-- Dietas -->
@@ -183,51 +183,51 @@
             <div>
                 <p class="nombre">Paola López</p>
                 <div class="opinion-imagen">
-                    <img src="media/opinion1.jpg" alt="Opniion nº1 Paola Lopez">
+                    <img src="media/opinion1.jpg" alt="Opnion nº1 Paola Lopez">
                 </div>
             </div>
             <div>
-                <p class="nombre">Melany Ruiz</p>
+                <p class="nombre">Paola Lopez</p>
                 <div class="opinion-imagen">
-                    <img src="media/opinion2.jpg">
+                    <img src="media/opinion2.jpg" alt="Opnion nº2 Melany Ruiz">
                 </div>
             </div>
             <div>
                 <p class="nombre">Gladys Restrepo</p>
                 <div class="opinion-imagen">
-                    <img src="media/opinion3.jpg">
+                    <img src="media/opinion3.jpg"  alt="Opnion nº3 Gladys Restrepo">
                 </div>
             </div>
 
             <div>
                 <p class="nombre">Gabriela Rojas</p>
                 <div class="opinion-imagen">
-                    <img src="media/opinion4.jpg">
+                    <img src="media/opinion4.jpg" alt="Opnion nº4 Gabriela Rojas">
                 </div>
             </div>
 
             <div>
                 <p class="nombre">Ximena Vidarte</p>
                 <div class="opinion-imagen">
-                    <img src="media/opinion5.jpg">
+                    <img src="media/opinion5.jpg" alt="Opnion nº5 Ximena Vidarte">
                 </div>
             </div>
             <div>
                 <p class="nombre">Ida Zamb</p>
                 <div class="opinion-imagen">
-                    <img src="media/opinion6.jpg">
+                    <img src="media/opinion6.jpg" alt="Opnion nº6 Ida Zamb">
                 </div>
             </div>
             <div>
                 <p class="nombre">Nicolle Lopez</p>
                 <div class="opinion-imagen">
-                    <img src="media/opinion7.jpg">
+                    <img src="media/opinion7.jpg" alt="Opnion nº7 Nicolle Lopez">
                 </div>
             </div>
             <div>
                 <p class="nombre">Daniela Fernandez</p>
                 <div class="opinion-imagen">
-                    <img src="media/opinion8.jpg">
+                    <img src="media/opinion8.jpg" alt="Opnion nº8 Daniela Fernandez">
                 </div>
             </div>
         </div>
@@ -246,15 +246,32 @@
 
             <form id="contactForm">
                 <p>Reserva tu cita:</p>
-                <input type="text" id="nombreCompleto" placeholder="Nombre y Apellidos"
-                    pattern="^[A-Za-z]+(\s[A-Za-z]+)$" required
-                    title="Por favor, ingresa solo letras y separa el nombre y apellido con un espacio">
-                <input type="number" id="telefono" placeholder="Número de contacto" required>
+                <label for="nombreCompleto" class="sr-only">Nombre y apellidos</label>
+                <input type="text" 
+                    id="nombreCompleto" 
+                    placeholder="Nombre y Apellidos"
+                    pattern="^[A-Za-zÁÉÍÓÚÑáéíóúñ]+(\s+[A-Za-zÁÉÍÓÚÑáéíóúñ]+)+$" required
+                    title="Por favor, escribe al menos nombre y apellido, solo letras">
+                
+                <label for="telefono" class="sr-only">Número de contacto</label>    
+                <input type="tel" 
+                    id="telefono"
+                    placeholder="Número de contacto" 
+                    inputmode="numeric" 
+                    pattern="^\+?[0-9]{8,15}$"
+                    title="Escribe solo números (8 a 15 dígitos)." required>
+                
+                <label for="email" class="sr-only">Correo electrónico</label>
                 <input type="email" id="email" placeholder="Correo electrónico" required>
+                
+                <label for="pesoEdadEstatura" class="sr-only">Peso(kg) / Edad / Estatura (cm)</label>
                 <input type="text" id="pesoEdadEstatura" placeholder="Peso(kg) / Edad / Estatura (cm)"
                     pattern="^[0-9]+(kg)\s*/\s*[0-9]+\s*/\s*[0-9]+(cm)$" required
                     title="Por favor, ingresa los tres valores con el formato correcto: Peso(kg) / Edad / Estatura (cm)">
+                
+                <label for="diaCita" class="sr-only">Selecciona fecha</label>
                 <input type="date" id="diaCita" placeholder="Selecciona fecha" required>
+                
                 <button type="submit">Enviar</button>
             </form>
         </div>
@@ -262,7 +279,8 @@
         <div id="modal" class="modal">
             <div class="modal-content">
                 <h2>Confirmación de reserva</h2>
-                <span class="close-btn">&times;</span>
+                <!-- <span class="close-btn">&times;</span> -->
+                <button class="close-btn" type="button" aria-label="Cerrar ventana de confirmación">&times;</button>
                 <p id="confirmation-message"></p>
                 <button onclick="closeModal()">Finalizar</button>
             </div>
@@ -275,23 +293,18 @@
         <div class="social-media">
             <!-- Enlace a ws -->
             <a href="https://www.whatsaap.com">
-                <img src="media/whatsaap.png" alt="Facebook" />
+                <img src="media/whatsaap.png" alt="whatsaap Michelle Dietética y Transformación" />
             </a>
 
             <!-- Enlace a Instagram -->
             <a href="https://www.instagram.com">
-                <img src="media/instagram.jpg" alt="Instagram" />
+                <img src="media/instagram.jpg" alt="Instagram Michelle Dietética y Transformación" />
             </a>
 
             <!-- Enlace a tiktok -->
             <a href="https://www.tiktok.com">
-                <img src="media/tiktok.jpg" alt="Twitter" />
+                <img src="media/tiktok.jpg" alt="Twitter Michelle Dietética y Transformación" />
             </a>
-
-            <!-- Enlace a faq -->
-            <!-- <a href="">
-                <img src="media/faq.jpg" id="faq" />
-            </a> -->
 
         </div>
 
